@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      display: block;
+    }
+    body {
+      color: #FFF;
+    }
+    .main-header {
+      background-color: #27ae60;
+      margin-bottom: 15px;
+      padding: 5px 5px 5px 10px;
+    }
+    .main-header h1 {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    #screen1 .galleries-list {
+      float: left;
+      width: 20%;
+    }
+    #screen1 .galleries-list h3 {
+      background-color: #d35400;
+      margin: 0;
+      padding: 5px 5px 5px 20px;
+    }
+    #screen1 .galleries-list ul {
+      padding-left: 0;
+    }
+    #screen1 .galleries-list ul li {
+      display: block;
+      margin-bottom: 10px;
+      background-color: #f39c12;
+    }
+    #screen1 .galleries-list ul li.curr {
+      background-color: #7A3100;
+    }
+    #screen1 .galleries-list ul li a {
+      padding: 5px;
+      display: block;
+      text-align: center;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      overflow: hidden;
+      color: #FFF;
+    }
+    #screen1 .galleries-list ul li a:hover {
+      background-color: #FFF;
+      color: #000;
+    }
+    #screen1 .mid {
+      margin-left: 5%;
+      width: 30%;
+      float: left;
+    }
+    #screen1 .gallery-info {
+      margin-bottom: 20px;
+    }
+    #screen1 .gallery-info h3 {
+      background-color: #C62AD3;
+      margin: 0 0 10px;
+      padding: 5px 5px 5px 20px;
+    }
+    #screen1 .gallery-info .info {
+      background-color: #6F8BFF;
+      line-height: 28px;
+      padding: 10px 20px;
+    }
+    #screen1 .gallery-info .info a {
+      color: #FFF;
+    }
+    #screen1 .map {
+      height: 400px;
+    }
+    #screen1 .paintings {
+      margin-left: 5%;
+      float: left;
+      width: 40%;
+    }
+    #screen1 .paintings h3 {
+      background-color: #D3C70F;
+      margin: 0 0 10px;
+      padding: 5px 5px 5px 20px;
+    }
+    #screen1 .paintings .table {
+      background-color: #AF4000;
+      font-size: 0;
+      padding: 10px 20px;
+    }
+    #screen1 .paintings .table .thead {
+      margin-bottom: 8px;
+    }
+    #screen1 .paintings .table .thead div,
+    .paintings .table .tbody .item div {
+      display: inline-block;
+      font-size: 12px;
+      vertical-align: middle;
+    }
+    #screen1 .paintings .table .tbody .item {
+      margin-bottom: 5px;
+      cursor: pointer;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+    }
+    #screen1 .paintings .table .tbody .item:hover {
+      background-color: #FFF;
+      color: #000;
+    }
+    #screen1 .paintings .table .head {
+      width: 20%;
+    }
+    #screen1 .paintings .table .head img {
+      vertical-align: middle;
+    }
+    #screen1 .paintings .table .thead .artist {
+      margin-left: 20%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    #screen1 .paintings .table .artist {
+      width: 20%;
+      overflow: hidden;
+    }
+    #screen1 .paintings .table .title {
+      width: 50%;
+    }
+    #screen1 .paintings .table .year {
+      width: 10%;
+    }
+    #screen2 {
+      display: none;
+    }
+    #screen2 .large-img-wrap {
+      float: left;
+      width: 40%;
+    }
+    #screen2 .large-img-wrap img {
+      width: 100%;
+    }
+    #screen2 .main {
+      float: left;
+      margin-left: 5%;
+      width: 55%;
+      background-color: #5C5C42;
+      padding: 10px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    #screen2 .main .artist-title {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    #screen2 .main .artist-name {
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    #screen2 .main .link {
+      margin-bottom: 15px;
+    }
+
+    #screen2 .main .link a {
+      color: #FFF;
+    }
+
+    #screen2 .description-wrap {
+      margin-bottom: 30px;
+    }
+
+    #screen2 .description {
+      margin-bottom: 2px;
+    }
+
+    #screen2 .speak,
+    #screen2 .artist-title-speak {
+      background-color: #55ab26;
+      padding: 5px;
+      text-align: center;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      overflow: hidden;
+      color: #FFF;
+      display: inline-block;
+    }
+
+    #screen2 .artist-title-speak {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    #screen2 .close-btn {
+      background-color: #F00;
+      padding: 5px;
+      display: block;
+      text-align: center;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      overflow: hidden;
+      color: #FFF;
+    }
+
+    #screen2 .close-btn:hover {
+      background-color: #FFF;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+<div id="screen1">
+  <header class="main-header">
+    <h1>COMP 3512 Assign1</h1>
+    <small>(づ￣ 3￣)づ</small>
+  </header>
+  <section class="galleries-list">
+    <h3>Galleries List</h3>
+    <ul>Loading</ul>
+  </section>
+  <div class="mid">
+    <section class="gallery-info">
+      <h3>Gallery Info</h3>
+      <div class="info">
+        <div>GalleryName</div>
+        <div>GalleryNativeName</div>
+        <div>GalleryCity</div>
+        <div>GalleryAddress</div>
+        <div>GalleryCountry</div>
+        <div>GalleryWebSite</div>
+      </div>
+    </section>
+    <div class="map">
+    </div>
+  </div>
+  <div class="paintings">
+    <h3>Paintings</h3>
+    <div class="table">
+      <div class="thead">
+        <div class="artist">Artist</div>
+        <div class="title">Title</div>
+        <div class="year">Year</div>
+      </div>
+      <div class="tbody">
+        <div class="item">
+          <div class="head"></div>
+          <div class="artist"></div>
+          <div class="title"></div>
+          <div class="year"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="screen2">
+  <header class="main-header">
+    <h1>COMP 3512 Assign1</h1>
+    <small>(づ￣ 3￣)づ</small>
+  </header>
+  <section class="large-img-wrap">
+    <img class="large-img" src="">
+  </section>
+  <section class="main">
+    <h2 class="artist-title">Painting title</h2>
+    <small class="artist-name">Artist name</small>
+    <a href="#" class="artist-title-speak">Speak</a>
+    <div class="other">Year, medium, size, copyright</div>
+    <div class="link">
+      <a class="museum-link" href="#" target="_blank">MUSEUM LINK</a>
+      <a class="wiki-link" href="#" target="_blank">WIKI LINK</a>
+    </div>
+    <div class="description-wrap">
+      <div class="description"></div>
+      <a href="#" class="speak">Speak</a>
+    </div>
+    <a class="close-btn" href="#" target="_self">CLOSE</a>
+  </section>
+</div>
+<script>
+  var map = null
+  function initMap() {
+    map = new google.maps.Map(document.querySelector('#screen1 .map'), {
+      mapTypeId: google.maps.MapTypeId.SATELLITE,
+      zoom: 18
+    })
+  }
+
+  function speak(textToSpeak) {
+    var newUtterance = new SpeechSynthesisUtterance(textToSpeak)
+    window.speechSynthesis.speak(newUtterance)
+  }
+
+  class Screen1 {
+    constructor () {
+      this.$root = document.querySelector('#screen1')
+      this.$galleriesList = this.$root.querySelector('.galleries-list')
+      this.$galleriesListUl = this.$galleriesList.querySelector('ul')
+      this.$galleryInfoList = this.$root.querySelector('.gallery-info .info')
+      this.galleriesList = []
+      this.paintingsList = []
+      this.isWaiting = false
+      this.initGalleries()
+    }
+    show() {
+      this.$root.style.display = 'block'
+    }
+    hide() {
+      this.$root.style.display = 'none'
+    }
+    async initGalleries() {
+      let list = localStorage.getItem('galleries-list')
+      if (!list) {
+        list = await this.fetchGalleriesAPI()
+        localStorage.setItem('galleries-list', JSON.stringify(list))
+      } else {
+        list = JSON.parse(list)
+      }
+
+      this.galleriesList = list
+      let listHtml = ''
+      list.forEach((item) => {
+        listHtml += `<li data-galleryid="${item.GalleryID}"><a href="#" target="_self">${item.GalleryName}</a></li>`
+      })
+      this.$galleriesListUl.innerHTML = listHtml
+      let lis = this.$galleriesListUl.querySelectorAll('li')
+      lis.forEach((item) => {
+        item.addEventListener('click', this.onClickGallery.bind(this))
+      })
+    }
+    async onClickGallery(e) {
+      let target = e.currentTarget
+      let galleryId = target.getAttribute('data-galleryid')
+      if (this.isWaiting) {
+        return
+      }
+      let lis = this.$galleriesListUl.querySelectorAll('li')
+      lis.forEach((item) => {
+        item.classList = ''
+      })
+      target.classList = 'curr'
+      let galleryInfo = this.getGalleryInfoByGalleryId(galleryId)
+      this.renderGalleryInfo(galleryInfo)
+      this.isWaiting = true
+      this.paintingsList = await this.fetchPaintingsAPIByGalleryId(galleryId)
+      this.isWaiting = false
+      this.renderMap(galleryInfo.Latitude, galleryInfo.Longitude, galleryInfo.GalleryCity)
+      this.renderPaintings(this.paintingsList)
+      let items = this.$root.querySelectorAll('.paintings .tbody .item')
+      items.forEach((item) => {
+        item.addEventListener('click', (e) => {
+          let target = e.currentTarget
+          let paintingId = target.getAttribute('data-paintingid')
+          let paintingInfo = this.getPaintingInfoByPaintingId(paintingId)
+          if (screen2) {
+            this.hide()
+            screen2.show()
+            screen2.setInfo(paintingInfo)
+          }
+        })
+      })
+    }
+    getPaintingInfoByPaintingId(id) {
+      return this.paintingsList.filter((item) => {
+        return item.PaintingID == id
+      })[0]
+    }
+    renderMap(lat, lng, city) {
+      if (map && map.setCenter) {
+        map.setCenter({lat, lng})
+        this.createMarker(lat, lng, city)
+      }
+    }
+    createMarker(lat, lng, city) {
+      let imageLatLong = {lat, lng}
+      let marker = new google.maps.Marker({
+        position: imageLatLong,
+        title: city,
+        map
+      })
+    }
+    renderPaintings(paintings) {
+      let tbody = this.$root.querySelector('.paintings .tbody')
+      let html = ''
+      paintings.forEach((item) => {
+        let artist = item.LastName
+        if(item.FirstName) {
+          artist = item.FirstName + artist
+        }
+        html += `\
+        <div class="item" data-paintingid="${item.PaintingID}">\
+          <div class="head"><img src="images/square-small/${item.ImageFileName}.jpg" alt="${item.Title}"></div>\
+          <div class="artist">${artist}</div>\
+          <div class="title">${item.Title}</div>\
+          <div class="year">${item.YearOfWork}</div>\
+        </div>`
+      })
+      tbody.innerHTML = html
+    }
+    renderGalleryInfo(info) {
+      let html = `\
+        <div>GalleryName: ${info.GalleryName}</div>\
+        <div>GalleryNativeName: ${info.GalleryNativeName}</div>\
+        <div>GalleryCity: ${info.GalleryCity}</div>\
+        <div>GalleryAddress: ${info.GalleryAddress}</div>\
+        <div>GalleryCountry: ${info.GalleryCountry}</div>\
+        <div>GalleryWebSite: <a href="${info.GalleryWebSite}" target="_blank">${info.GalleryWebSite}</a></div>`
+      this.$galleryInfoList.innerHTML = html
+    }
+    getGalleryInfoByGalleryId(id) {
+      return this.galleriesList.filter((item) => {
+        return item.GalleryID == id
+      })[0]
+    }
+    fetchGalleriesAPI() {
+      return new Promise((resolve, reject) => {
+        fetch('https://www.randyconnolly.com/funwebdev/services/art/galleries.php').then(function (response) {
+          return response.json()
+        }).then(function (data) {
+          resolve(data)
+        }).catch(function (error) {
+          console.log('error', error)
+        })
+      })
+    }
+    fetchPaintingsAPIByGalleryId(galleryId) {
+      return new Promise((resolve, reject) => {
+        fetch(`https://www.randyconnolly.com/funwebdev/services/art/paintings.php?gallery=${galleryId}`).then(function (response) {
+          return response.json()
+        }).then(function (data) {
+          resolve(data)
+        }).catch(function (error) {
+          console.log('error', error)
+        })
+      })
+    }
+  }
+
+  class Screen2 {
+    constructor () {
+      this.$root = document.querySelector('#screen2')
+      this.$largeImg = this.$root.querySelector('#screen2 .large-img')
+      this.$artistTitle = this.$root.querySelector('#screen2 .artist-title')
+      this.$artistTitleSpeak = this.$root.querySelector('#screen2 .artist-title-speak')
+      this.$artistName = this.$root.querySelector('#screen2 .artist-name')
+      this.$other = this.$root.querySelector('#screen2 .other')
+      this.$museumLink = this.$root.querySelector('#screen2 .museum-link')
+      this.$wikiLink = this.$root.querySelector('#screen2 .wiki-link')
+      this.$description = this.$root.querySelector('#screen2 .description-wrap .description')
+      this.$closeBtn = this.$root.querySelector('#screen2 .close-btn')
+      this.$descriptionSpeak = this.$root.querySelector('#screen2 .description-wrap .speak')
+
+      this.$artistTitleSpeak.addEventListener('click', this.onClickTitleSpeak.bind(this))
+      this.$descriptionSpeak.addEventListener('click', this.onClickDescription.bind(this))
+      this.$closeBtn.addEventListener('click', this.onClickCloseBtn.bind(this))
+    }
+    show() {
+      this.$root.style.display = 'block'
+    }
+    hide() {
+      this.$root.style.display = 'none'
+    }
+    onClickCloseBtn() {
+      screen1.show()
+      this.hide()
+    }
+    setInfo(info) {
+      var name = info.LastName
+      if (info.FirstName) {
+        name = info.FirstName + name
+      }
+      this.$largeImg.src = `images/medium/${info.ImageFileName}.jpg`
+      this.$artistTitle.innerHTML = info.Title
+      this.$artistName.innerHTML = name
+      this.$other.innerHTML = `${info.YearOfWork} | ${info.Medium} | width ${info.Width} | height ${info.Height} | ${info.CopyrightText}`
+      if (info.MuseumLink) {
+        this.$museumLink.setAttribute('href', info.MuseumLink)
+        this.$museumLink.style.display = 'inline'
+      } else {
+        this.$museumLink.style.display = 'none'
+      }
+      if (info.WikiLink) {
+        this.$wikiLink.setAttribute('href', info.WikiLink)
+        this.$wikiLink.style.display = 'inline'
+      } else {
+        this.$wikiLink.style.display = 'none'
+      }
+      this.$description.innerHTML = info.Description
+    }
+    onClickTitleSpeak() {
+      speak(this.$artistTitle.innerHTML + ' ' + this.$artistName.innerHTML)
+    }
+    onClickDescription() {
+      speak(this.$description.innerHTML)
+    }
+  }
+
+  var screen1 = new Screen1()
+  var screen2 = new Screen2()
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXb0t38m7OsZNwZZ6nino7f6FHhiPxhuE&callback=initMap" frameborder="0"></script>
+</body>
+</html>
